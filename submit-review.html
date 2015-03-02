@@ -1,0 +1,20 @@
+<span class="lead">Submit a Review</span>
+<form name="reviewForm" class="clearfix" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+	<div class="well" ng-show="reviewCtrl.review.stars || reviewCtrl.review.body || reviewCtrl.review.author">
+		Preview
+		<blockquote>
+			<b>{{reviewCtrl.review.stars}} Stars: </b>
+			{{reviewCtrl.review.body}}<br/>
+			<small><cite>{{reviewCtrl.review.author}}</cite></small>
+		</blockquote>
+	</div>
+
+	<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" ng-model="reviewCtrl.review.stars"  title="Stars" required>
+      <option value="">Rate the Product</option>
+    </select>
+
+	<textarea class="col-xs-12 top10 padding10 form-control" placeholder="Write a short review of the product..." ng-model="reviewCtrl.review.body" required></textarea>
+	<label>by:</label>
+	<input class="col-xs-12 padding10 form-control" type="email" placeholder="JohnDoe@example.com" ng-model="reviewCtrl.review.author" required/>
+	<input class="btn btn-info col-xs-12 topbottom10 form-control" type="submit" value="Submit"/>
+</form>

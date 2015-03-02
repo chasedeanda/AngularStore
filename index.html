@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.1/superhero/bootstrap.min.css">
+
+<style>
+	.topbottom10{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.thumbnail{
+		border:1px solid #ddd;
+		height: 93px;
+		padding: 5px;
+	}
+	.img-wrap img{
+		height: 150px;
+	}
+	.dropdown-menu{
+		background: #f0ad4e;
+		border: 1px solid #B7B7B7;
+		margin-top: 39px;
+	}
+	.dropdown-menu:hover{
+		border: 1px solid #B7B7B7;
+	}
+	.textleft{
+		text-align: left;
+	}
+	.top10{
+		margin-top: 10px;
+	}
+	.padding10{
+		padding: 10px;
+	}
+	.ng-invalid.ng-dirty{
+		border-color: #fa787e;
+	}
+	.ng-valid.ng-dirty{
+		border-color: #78fa89;
+	}
+</style>
+
+</head>
+
+<body ng-controller="StoreController as store">
+	<div class="list-group">
+		<div class="list-group-item" ng-repeat="product in store.products" ng-hide="product.soldOut">
+
+			<h3>
+				<product-title></product-title>
+			</h3>
+			
+			<button class="btn btn-primary" ng-show="product.canPurchase"> Add to Cart </button>
+			<div class="gallery">
+		        <product-gallery></product-gallery>
+		    </div>
+			<tabs></tabs>
+
+
+		</div>
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="products.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(".dropdown-menu li a").click(function(e){
+			e.preventDefault();
+			// debugger
+		  var selText = $(this).text();
+		  $(this).parents('.dropdown').children('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+		});
+	});
+	</script>
+</body>
+
+</html>
